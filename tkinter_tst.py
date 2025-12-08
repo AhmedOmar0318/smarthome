@@ -6,7 +6,7 @@ dit is vooral voor het leren hoe we met tkinter werken.
 """
 
 # Import Module
-from tkinter import *
+from tkinter_tst import *
 
 # create root window
 root = Tk()
