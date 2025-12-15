@@ -1,9 +1,9 @@
-from api import haal_weer_op
+from api import forecast_7d
 
 def genereer_dataset(n=50):
     data = []
     for _ in range(n):
-        buiten_temp = haal_weer_op()
+        buiten_temp = forecast_7d()
         if buiten_temp is None:
             continue
 
