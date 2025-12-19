@@ -1,7 +1,6 @@
 # service/api.py
 import requests
 import openmeteo_requests
-
 import pandas as pd
 import requests_cache
 from retry_requests import retry
@@ -77,8 +76,4 @@ def forecast_7d():
 
     daily_data["temperature_2m_max"] = daily_temperature_2m_max
     daily_data["temperature_2m_min"] = daily_temperature_2m_min
-    inp = input("Min/max: ")
-    if inp == "min":
-        return daily_temperature_2m_min
-    if inp == "max":
-        return daily_temperature_2m_max
+    return daily_temperature_2m_max, daily_temperature_2m_min

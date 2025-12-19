@@ -1,18 +1,19 @@
 from api import forecast_7d
 
-def genereer_dataset(n=50):
-    pass
-    # data = []
-    # for _ in range(n):
-    #     dataset = forecast_7d()
-    #     if dataset is None:
-    #         continue
+def genereer_dataset():
+    data = []
 
-        # Simuleer gewenste binnentemp (target)
-    #     desired_temp = 20 + (15 - buiten_temp) * 0.3
-    #
-    #     data.append((daily_temperature_2m_max, desired_temp))
-    # return data
+    max_temps, min_temps = forecast_7d()
+
+    for buiten_temp in max_temps:
+        # simpele target: kouder buiten → warmer binnen
+        desired_temp = 20 + (15 - buiten_temp) * 0.3
+        data.append((buiten_temp, desired_temp))
+
+    return data
+
 
 if __name__ == "__main__":
-    print(genereer_dataset())
+    dataset = genereer_dataset()
+    for i, (x, y) in enumerate(dataset, 1):
+        print(f"{i}: buiten={x:.2f}°C -> gewenst={y:.2f}°C")
